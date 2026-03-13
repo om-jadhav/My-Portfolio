@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='index.js') }}" defer></script>
+
+    <title>Om Jadhav | Portfolio</title>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <div class="nav__logo">Om.Jadhav</div>
+
+        <!-- Hamburger Toggle -->
+        <div class="nav__toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav__list">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#works">Works</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="hero__content">
+            <h1 id="rotating-text">Om Jadhav</h1>
+            <h3>Backend Developer | Cybersecurity Enthusiast</h3>
+            <p class="hero-summary">
+                <span id="typed-text"></span>
+            </p>
+            <div class="hero-buttons">
+                <!-- Main Buttons -->
+                <a href="https://github.com/Om-jadhav" target="_blank" class="btn primary-btn">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+
+                <a href="/static/Om_Resume.pdf" class="btn outline-btn" download>
+                    Download Resume
+                </a>
+                <a href="https://tryhackme.com/p/om.jadhav2091" target="_blank" class="btn thm-btn">
+                    <i class="fas fa-shield-alt"></i> TryHackMe
+                </a>
+
+                <!-- Social Icons -->
+                <div class="social-icons">
+                    <a href="https://linkedin.com/in/om-jadhav-53b47131b" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="hero__right">
+            <img src="{{ url_for('static', filename='assets/illustrations/header.svg') }}" alt="Hero Illustration">
+
+        </div>
+    </section>
+
+
+
+    <!-- SERVICES -->
+    <section id="services" class="section">
+        <h2 class="section__title">Services</h2>
+
+        <div class="services">
+            <div class="service-card">
+                <img src="{{ url_for('static', filename='assets/services/Web_developer.svg') }}">
+                <h3>Web Development</h3>
+                <p>Responsive & modern websites.</p>
+            </div>
+
+            <div class="service-card">
+                <img src="{{ url_for('static', filename='assets/services/Flask-Light.png') }}">
+                <h3>Python Development</h3>
+                <p>Developing Projects with Flask.</p>
+            </div>
+
+            <div class="service-card">
+                <img src="{{ url_for('static', filename='assets/services/CyberSecurity.svg') }}">
+                <h3>Cybersecurity</h3>
+                <p>Cybersecurity Tools & secure coding.</p>
+            </div>
+            <div class="service-card">
+                <img src="{{ url_for('static', filename='assets/services/MERNstack.png') }}">
+                <h3>MERN Stack</h3>
+                <p>Node, Express, React, MongoDB.</p>
+            </div>
+        </div>
+    </section>
+    <!--Tech Badges-->
+    <section id="tech" class="section tech-section">
+        <h2 class="section__title">Tech Stack</h2>
+
+        <!-- Development Stack -->
+        <h3 class="tech-category">Development</h3>
+        <div class="tech-slider">
+            <div class="tech-track">
+
+                <div class="tech-item"><i class="devicon-html5-plain colored"></i>HTML</div>
+                <div class="tech-item"><i class="devicon-css3-plain colored"></i>CSS</div>
+                <div class="tech-item"><i class="devicon-javascript-plain colored"></i>JavaScript</div>
+                <div class="tech-item"><i class="devicon-react-original colored"></i>React</div>
+                <div class="tech-item"><i class="devicon-nodejs-plain colored"></i>Node.js</div>
+                <div class="tech-item"><i class="devicon-express-original"></i>Express</div>
+                <div class="tech-item"><i class="devicon-mongodb-plain colored"></i>MongoDB</div>
+                <div class="tech-item"><i class="devicon-python-plain colored"></i>Python</div>
+                <div class="tech-item"><i class="devicon-git-plain colored"></i>Git</div>
+                <div class="tech-item"><i class="devicon-mysql-plain colored"></i>MySQL</div>
+
+                <!-- duplicate for smooth loop -->
+                <div class="tech-item"><i class="devicon-html5-plain colored"></i>HTML</div>
+                <div class="tech-item"><i class="devicon-css3-plain colored"></i>CSS</div>
+                <div class="tech-item"><i class="devicon-javascript-plain colored"></i>JavaScript</div>
+                <div class="tech-item"><i class="devicon-react-original colored"></i>React</div>
+                <div class="tech-item"><i class="devicon-nodejs-plain colored"></i>Node.js</div>
+                <div class="tech-item"><i class="devicon-express-original"></i>Express</div>
+                <div class="tech-item"><i class="devicon-mongodb-plain colored"></i>MongoDB</div>
+                <div class="tech-item"><i class="devicon-python-plain colored"></i>Python</div>
+                <div class="tech-item"><i class="devicon-git-plain colored"></i>Git</div>
+                <div class="tech-item"><i class="devicon-mysql-plain colored"></i>MySQL</div>
+
+            </div>
+        </div>
+
+        <!-- Cybersecurity Stack -->
+        <h3 class="tech-category">Cybersecurity Tools</h3>
+        <div class="tech-slider reverse">
+            <div class="tech-track">
+
+                <div class="tech-item"><i class="devicon-linux-plain colored"></i>Linux</div>
+                <div class="tech-item">🔎 Wireshark</div>
+                <div class="tech-item">📡 Nmap</div>
+                <div class="tech-item">💣 Metasploit</div>
+                <div class="tech-item">🛡 Burp Suite</div>
+                <div class="tech-item">⚔ Hydra</div>
+
+                <!-- duplicate -->
+                <div class="tech-item"><i class="devicon-linux-plain colored"></i>Linux</div>
+                <div class="tech-item">🔎 Wireshark</div>
+                <div class="tech-item">📡 Nmap</div>
+                <div class="tech-item">💣 Metasploit</div>
+                <div class="tech-item">🛡 Burp Suite</div>
+                <div class="tech-item">⚔ Hydra</div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- WORKS -->
+    <section id="works" class="section dark">
+        <h2 class="section__title">Projects</h2>
+
+        <div class="projects">
+            <div class="projects__track">
+
+                <!-- Project Cards -->
+                <div class="project-card">
+                    <img src="{{ url_for('static', filename='assets/works/Blog-website.png') }}">
+                    <h3>Digital Dynamics Review</h3>
+                    <a href="https://github.com/Om-jadhav/Digital-Dynamics-Review" target="_blank" class="project-btn">
+                        <i class="fab fa-github"></i>
+                        View on GitHub
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <img src="{{ url_for('static', filename='assets/works/password-checker.png') }}">
+                    <h3>Password Complexity Checker</h3>
+                    <a href="https://github.com/Om-jadhav/password-checker" target="_blank" class="project-btn">
+                        <i class="fab fa-github"></i>
+                        View on GitHub
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <img src="{{ url_for('static', filename='assets/works/Expense-Tracker.png') }}">
+                    <h3>Expense Tracker</h3>
+                    <a href="https://github.com/Om-jadhav/Expense-Tracker" target="_blank" class="project-btn">
+                        <i class="fab fa-github"></i>
+                        View on GitHub
+                    </a>
+                </div>
+
+                <!-- Duplicate (IMPORTANT for smooth infinite scroll) -->
+                <div class="project-card">
+                    <img src="{{ url_for('static', filename='assets/works/Blog-website.png') }}">
+                    <h3>Digital Dynamics Review</h3>
+                    <a href="https://github.com/Om-jadhav/Digital-Dynamics-Review" target="_blank" class="project-btn">
+                        <i class="fab fa-github"></i>
+                        View on GitHub
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <img src="{{ url_for('static', filename='assets/works/password-checker.png') }}">
+                    <h3>Password Complexity Checker</h3>
+                    <a href="https://github.com/Om-jadhav/password-checker" target="_blank" class="project-btn">
+                        <i class="fab fa-github"></i>
+                        View on GitHub
+                    </a>
+                </div>
+
+                <div class="project-card">
+                    <img src="{{ url_for('static', filename='assets/works/Expense-Tracker.png') }}">
+                    <h3>Expense Tracker</h3>
+                    <a href="https://github.com/Om-jadhav/Expense-Tracker" target="_blank" class="project-btn">
+                        <i class="fab fa-github"></i>
+                        View on GitHub
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+        <h2 class="section__title">Let’s Connect</h2>
+
+        <div class="contact">
+            <form class="contact-form">
+                <input name="email" type="email"placeholder="Your Email">
+                <input name="subject" type="text"placeholder="Subject">
+                <textarea name="message" placeholder="Your Message"></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+
+            <img src="{{ url_for('static', filename='assets/illustrations/connect.svg') }}">
+        </div>
+    </section>
+
+    <footer class="footer">
+        © 2026 Om Jadhav — Web Developer & Cybersecurity Enthusiast
+    </footer>
+
+</body>
+
+</html>
