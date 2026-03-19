@@ -5,7 +5,7 @@ app = Flask(__name__)
 def hello_world1():
     return render_template('index.html');
 
-@app.route('/#contact', methods=['POST', 'GET'])
+@app.route('/submit_form', methods=['POST', 'GET'])
 def submit_form():
     if request.method == 'POST':
         data = request.form.to_dict()
