@@ -243,16 +243,25 @@
         <h2 class="section__title">Let’s Connect</h2>
 
         <div class="contact">
-            <form action="submit_form" method="POST" class="contact-form">
-                <input name="email" type="email"placeholder="Your Email">
-                <input name="subject" type="text"placeholder="Subject">
-                <textarea name="message" placeholder="Your Message"></textarea>
-                <button type="submit">Send Message</button>
+            <form id="contactForm" action="submit_form" method="POST" class="contact-form">
+                <input name="email" type="email" placeholder="Your Email" required>
+                <input name="subject" type="text" placeholder="Subject" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <input type="text" name="website" style="display:none">
+                <button id="sendBtn" type="submit">Send Message</button>
             </form>
 
             <img src="{{ url_for('static', filename='assets/illustrations/connect.svg') }}">
         </div>
     </section>
+    <!-- Success Popup -->
+    <div id="successPopup" class="success-popup">
+        <div class="success-box">
+            <div class="checkmark"></div>
+            <h3>Message Sent!</h3>
+            <p>I'll get back to you soon.</p>
+        </div>
+    </div>
 
     <footer class="footer">
         © 2026 Om Jadhav — Web Developer & Cybersecurity Enthusiast

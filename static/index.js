@@ -125,5 +125,48 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // ============================
+    // CONTACT FORM SUBMISSION
+    // ============================
+    const form = document.getElementById("contactForm");
+    const popup = document.getElementById("successPopup");
+    const btn = document.getElementById("sendBtn");
+
+    if (form) {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            btn.innerText = "Sending...";
+            btn.disabled = true;
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch("/submit_form", {
+                    method: "POST",
+                    body: formData
+                });
+
+                if (response.ok) {
+                    popup.classList.add("show");
+                    form.reset();
+
+                    setTimeout(() => {
+                        popup.classList.remove("show");
+                    }, 3000);
+                } else {
+                    alert("Failed to send message");
+                }
+
+            } catch (error) {
+                console.error("Error:", error);
+                alert("Server error");
+            }
+
+            btn.innerText = "Send Message";
+            btn.disabled = false;
+        });
+    }
+
 
 });

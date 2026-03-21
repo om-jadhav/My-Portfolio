@@ -617,3 +617,55 @@ button {
     }
 }
 
+.success-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+.success-popup.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.success-box {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    transform: scale(0.8);
+    animation: popIn 0.4s ease forwards;
+}
+
+@keyframes popIn {
+    to {
+        transform: scale(1);
+    }
+}
+
+.checkmark {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 4px solid #4CAF50;
+    margin: 0 auto 15px;
+    position: relative;
+}
+
+.checkmark::after {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 18px;
+    width: 18px;
+    height: 10px;
+    border: solid #4CAF50;
+    border-width: 0 0 4px 4px;
+    transform: rotate(-45deg);
+}
