@@ -1,27 +1,36 @@
 from flask import Flask, render_template, request, redirect, url_for
-import smtplib
-from email.mime.text import MIMEText
-from dotenv import load_dotenv
+import csv
 import os
 import re
-
-load_dotenv()
+from datetime import datetime
 
 app = Flask(__name__)
 
-EMAIL_USER = os.getenv("EMAIL_USER")
-EMAIL_PASS = os.getenv("EMAIL_PASS")
-
+CSV_FILE = "messages.csv"
 
 def is_valid_email(email):
     pattern = r"^[^@\s]+@[^@\s]+\.[^@\s]+$"
     return re.match(pattern, email)
 
+def initialize_csv():
+    if not os.path.exists(CSV_FILE):
+        with open(CSV_FILE, mode="w", newline="", encoding="utf-8") as file:
+            writer = csv.writer(file)
+            writer.writerow([
+                "timestamp",
+                "ip_address",
+                "email",
+                "subject",
+                "message"
+            ])
+        print("CSV file created.")
+
+
+initialize_csv()
 
 @app.route("/")
 def home():
     return render_template("index.html")
-
 
 @app.route("/submit_form", methods=["POST"])
 def submit_form():
@@ -30,11 +39,13 @@ def submit_form():
         subject = request.form.get("subject")
         message = request.form.get("message")
         honeypot = request.form.get("website")
+        ip_address = request.remote_addr
 
-        print("FORM DATA:", email, subject, message)
+        print("FORM DATA:", email, subject, message, "| IP:", ip_address)
 
-        # Bot protection
+        # Bot detection
         if honeypot:
+            print("Bot detected. Ignored.")
             return "", 204
 
         # Validation
@@ -44,43 +55,24 @@ def submit_form():
         if not is_valid_email(email):
             return "Invalid email address"
 
-        # Email content
-        body = f"""
-New message from portfolio
+        # Save to CSV
+        with open(CSV_FILE, mode="a", newline="", encoding="utf-8") as file:
+            writer = csv.writer(file)
+            writer.writerow([
+                datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                ip_address,
+                email,
+                subject,
+                message
+            ])
 
-Sender: {email}
-Subject: {subject}
+        print("Message stored successfully.")
 
-Message:
-{message}
-"""
-
-        msg = MIMEText(body)
-        msg["Subject"] = f"Portfolio Contact: {subject}"
-        msg["From"] = EMAIL_USER
-        msg["To"] = EMAIL_USER
-        msg["Reply-To"] = email
-
-        # Connect to Gmail SMTP
-        server = smtplib.SMTP("smtp.gmail.com", 587)
-        server.ehlo()
-        server.starttls()
-        server.ehlo()
-        server.login(EMAIL_USER, EMAIL_PASS)
-
-        server.sendmail(EMAIL_USER, EMAIL_USER, msg.as_string())
-
-        print("EMAIL SENT SUCCESSFULLY")
-
-        server.quit()
-
-
-        return {"status": "success"}
+        return redirect(url_for("home"))
 
     except Exception as e:
-        print("Error:", e)
-        return "Something went wrong while sending the email."
-
+        print("ERROR:", e)
+        return "Something went wrong while saving the message."
 
 if __name__ == "__main__":
     app.run(debug=True)

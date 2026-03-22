@@ -126,47 +126,76 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ============================
-    // CONTACT FORM SUBMISSION
-    // ============================
-    const form = document.getElementById("contactForm");
-    const popup = document.getElementById("successPopup");
-    const btn = document.getElementById("sendBtn");
+// CONTACT FORM SUBMISSION
+// ============================
+const form = document.getElementById("contactForm");
+const popup = document.getElementById("successPopup");
+const btn = document.getElementById("sendBtn");
 
-    if (form) {
-        form.addEventListener("submit", async (e) => {
-            e.preventDefault();
+if (form) {
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-            btn.innerText = "Sending...";
-            btn.disabled = true;
+        btn.innerText = "Sending...";
+        btn.disabled = true;
 
-            const formData = new FormData(form);
+        const formData = new FormData(form);
 
-            try {
-                const response = await fetch("/submit_form", {
-                    method: "POST",
-                    body: formData
+        try {
+            const response = await fetch("/submit_form", {
+                method: "POST",
+                body: formData
+            });
+
+            if (response.ok) {
+
+                form.reset();
+
+                // show popup
+                requestAnimationFrame(() => {
+                    popup.classList.add("active");
                 });
 
-                if (response.ok) {
-                    popup.classList.add("show");
-                    form.reset();
+                // button success state
+                btn.classList.add("success");
+                btn.innerText = "Sent ✓";
+
+                // auto close popup
+                setTimeout(() => {
+                    popup.classList.add("closing");
 
                     setTimeout(() => {
-                        popup.classList.remove("show");
-                    }, 3000);
-                } else {
-                    alert("Failed to send message");
-                }
+                        popup.classList.remove("active", "closing");
+                    }, 400);
 
-            } catch (error) {
-                console.error("Error:", error);
-                alert("Server error");
+                }, 3200);
+
+            } else {
+                alert("Failed to send message");
             }
 
+        } catch (error) {
+            console.error("Server error:", error);
+        }
+
+        // reset button
+        setTimeout(() => {
+            btn.classList.remove("success");
             btn.innerText = "Send Message";
             btn.disabled = false;
-        });
-    }
+        }, 2000);
+    });
+}
 
+// close popup when clicking outside
+popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+        popup.classList.add("closing");
+
+        setTimeout(() => {
+            popup.classList.remove("active", "closing");
+        }, 400);
+    }
+});
 
 });
