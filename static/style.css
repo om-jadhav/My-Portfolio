@@ -8,8 +8,9 @@
 body {
     background: #0f0f0f;
     color: #fff;
-    padding-top:80px;
+    padding-top: 80px;
 }
+
 html {
     scroll-behavior: smooth;
 }
@@ -18,7 +19,6 @@ img {
     max-width: 100%;
     height: auto;
 }
-
 
 /* NAV */
 .nav {
@@ -38,11 +38,13 @@ img {
     backdrop-filter: blur(10px);
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
+
 .nav__logo {
     font-weight: 700;
     font-size: 1.2rem;
     cursor: pointer;
 }
+
 .nav__list {
     list-style: none;
     display: flex;
@@ -53,6 +55,7 @@ img {
     color: #fff;
     text-decoration: none;
 }
+
 .nav__list a {
     position: relative;
     text-decoration: none;
@@ -60,6 +63,7 @@ img {
     font-weight: 400;
     transition: 0.3s ease;
 }
+
 .nav__list a::after {
     content: "";
     position: absolute;
@@ -78,6 +82,7 @@ img {
 .nav__list a.active::after {
     width: 100%;
 }
+
 .nav__toggle {
     display: none;
     flex-direction: column;
@@ -91,8 +96,8 @@ img {
     background: white;
     transition: 0.3s ease;
 }
-@media (max-width: 768px) {
 
+@media (max-width: 768px) {
     .nav {
         padding: 20px 30px;
     }
@@ -119,7 +124,6 @@ img {
     }
 }
 
-
 /* HERO */
 .hero {
     min-height: 100vh;
@@ -128,7 +132,7 @@ img {
     justify-content: center;
     padding: 0 60px;
     text-align: left;
-    color:#ffffff;
+    color: #ffffff;
 }
 
 .hero__right {
@@ -137,6 +141,7 @@ img {
     justify-content: center;
     align-items: center;
 }
+
 .hero__left {
     flex: 1;
 }
@@ -158,29 +163,25 @@ img {
     max-width: 420px;
     color: #bbb;
 }
+
 .hero__right img {
     width: 100%;
     max-width: 480px;
     animation: float 4s ease-in-out infinite;
     transition: transform 0.4s ease;
 }
+
 .hero__right img:hover {
     animation-play-state: paused;
     transform: scale(1.05);
 }
-/* ===== FLOAT ANIMATION ===== */
 
 @keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-15px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
 }
+
 @media (max-width: 768px) {
     .hero {
         flex-direction: column;
@@ -192,6 +193,7 @@ img {
         margin-top: 40px;
     }
 }
+
 .hero-summary {
     max-width: 520px;
     margin: 20px 0;
@@ -199,17 +201,19 @@ img {
     line-height: 1.6;
     color: #bbb;
 }
- #typed-text::after {
+
+#typed-text::after {
     content: "|";
     margin-left: 5px;
     animation: blink 1s infinite;
 }
 
 @keyframes blink {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
+    0%   { opacity: 1; }
+    50%  { opacity: 0; }
     100% { opacity: 1; }
 }
+
 .hero__content {
     max-width: 700px;
     opacity: 0;
@@ -217,10 +221,12 @@ img {
     transition: all 0.8s ease, transform 0.8s ease;
     color: #ffffff;
 }
+
 .hero__content.show {
     opacity: 1;
     transform: translateY(0);
 }
+
 .hero h1 {
     font-size: 3rem;
     color: #ffffff;
@@ -230,6 +236,7 @@ img {
     font-weight: 400;
     color: #aaaaaa;
 }
+
 .hero-buttons {
     display: flex;
     gap: 20px;
@@ -247,7 +254,6 @@ img {
     font-weight: 500;
 }
 
-/* GitHub Button */
 .primary-btn {
     background: #00f5ff;
     color: #000;
@@ -258,7 +264,6 @@ img {
     transform: translateY(-2px);
 }
 
-/* Resume Button */
 .outline-btn {
     border: 1px solid #00f5ff;
     color: #00f5ff;
@@ -270,7 +275,6 @@ img {
     transform: translateY(-2px);
 }
 
-/* TryHackMe */
 .thm-btn {
     background: #ff3c3c;
     color: #fff;
@@ -280,7 +284,7 @@ img {
     box-shadow: 0 0 12px #ff3c3c;
     transform: translateY(-2px);
 }
-/* Social Icons */
+
 .social-icons {
     display: flex;
     gap: 15px;
@@ -297,7 +301,6 @@ img {
     transform: translateY(-3px);
 }
 
-/* Summary */
 .summary-section {
     padding: 60px 10%;
     text-align: center;
@@ -310,6 +313,7 @@ img {
     line-height: 1.7;
     color: #ccc;
 }
+
 /* SECTIONS */
 section {
     padding: 6rem 60px;
@@ -320,7 +324,6 @@ section {
     max-width: 1200px;
     margin: auto;
 }
-
 
 .section__title {
     text-align: center;
@@ -349,6 +352,7 @@ section {
 .service-card:hover {
     transform: translateY(-10px);
 }
+
 /* Tech Badges */
 .tech-category {
     margin: 30px 0 15px;
@@ -386,12 +390,8 @@ section {
 }
 
 @keyframes scrollTech {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
 }
 
 .tech-slider.reverse .tech-item {
@@ -401,6 +401,7 @@ section {
 .tech-slider.reverse .tech-item:hover {
     color: #6c63ff;
 }
+
 .tech-slider.reverse .tech-item i {
     color: white !important;
 }
@@ -433,8 +434,6 @@ section {
     gap: 15px;
     width: 100%;
     max-width: 450px;
-}
-.contact-form {
     background: #1c1c1c;
     padding: 30px;
     border-radius: 12px;
@@ -461,26 +460,96 @@ button {
     padding: 30px;
     background: #0a0a0a;
 }
-/* PROJECT ANIMATION SECTION */
+
+/* ============================================
+   PROJECT ANIMATION SECTION
+   ============================================ */
 
 .projects {
     overflow: hidden;
     width: 100%;
     margin-top: 40px;
+    position: relative;
+}
+
+.projects::before,
+.projects::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 80px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.projects::before {
+    left: 0;
+    background: linear-gradient(to right, #141414, transparent);
+}
+
+.projects::after {
+    right: 0;
+    background: linear-gradient(to left, #141414, transparent);
 }
 
 .projects__track {
     display: flex;
     gap: 30px;
-    animation: scroll 30s linear infinite;
+    width: max-content;
+    animation: infiniteScroll 35s linear infinite;
+    cursor: grab;
+    user-select: none;
 }
 
-/* Pause scrolling when user interacts */
-.projects:hover .projects__track {
+.projects__track.is-paused {
     animation-play-state: paused;
 }
 
-/* Project button */
+.projects__track.is-dragging {
+    cursor: grabbing;
+    animation-play-state: paused;
+}
+
+@keyframes infiniteScroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+/* Card width is set by JS — see scripts.js */
+.project-card {
+    flex-shrink: 0;
+    background: #1c1c1c;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: visible;
+    min-height: 300px;
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.45s ease;
+}
+
+.project-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.45s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    z-index: 20;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    cursor: default;
+}
+
+.project-card:hover img {
+    transform: scale(1.04);
+}
+
 .project-btn {
     display: inline-flex;
     align-items: center;
@@ -501,86 +570,27 @@ button {
     box-shadow: 0 0 12px #6c63ff;
 }
 
-/* 👇 Keeps exactly 3 visible cards */
-.project-card {
-    flex: 0 0 calc((100% - 60px) / 3);
-    background: #1c1c1c;
-    padding: 15px;
-    border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-
-    position: relative;
-    overflow: visible;
-    min-height: 300px;
-
-    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.45s ease;
-}   
-
-/* Image */
-.project-card img {
-    width: 100%;
-    height: 170px;
-    object-fit: cover;
-    border-radius: 10px;
-    transition: transform 0.45s ease;
-}
-
-/* Hover expansion */
-.project-card:hover {
-    transform: translateY(-8px) scale(1.03);
-    z-index: 20;
-    box-shadow: 0 18px 40px rgba(0,0,0,0.35);
-    cursor: default;
-}
-.project-card:hover img {
-    transform: scale(1.04);
-}
-
-/* Infinite scroll animation */
-@keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
-}
-
-/* Fade animation */
-.fade-in {
-    animation: fadeUp 1s ease forwards;
-}
-
-/* Project info section (hidden initially) */
 .project-overlay {
     margin-top: 10px;
-
     opacity: 0;
     transform: translateY(10px);
     max-height: 0;
     overflow: hidden;
-
     display: flex;
     flex-direction: column;
     gap: 6px;
-
-    transition: 
+    transition:
         opacity 0.35s ease,
         transform 0.35s ease,
         max-height 0.45s ease;
 }
 
-
-/* Reveal info on hover */
 .project-card:hover .project-overlay {
     opacity: 1;
     transform: translateY(0);
     max-height: 600px;
 }
 
-/* Text formatting */
 .project-overlay h4 {
     font-size: 13px;
     color: #C1BFFF;
@@ -591,6 +601,7 @@ button {
     font-size: 13px;
     line-height: 1.45;
 }
+
 .project-overlay h4,
 .project-overlay p,
 .project-overlay .project-btn {
@@ -606,34 +617,28 @@ button {
     transform: translateY(0);
 }
 
-/* GitHub button position inside overlay */
 .project-overlay .project-btn {
     margin-top: 10px;
     align-self: flex-start;
 }
 
-/* Animations */
 @keyframes fadeUp {
-    from { 
-        opacity: 0; 
-        transform: translateY(20px); 
-    }
-    to { 
-        opacity: 1; 
-        transform: translateY(0); 
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes blink {
-    50% { opacity: 0; }
+.fade-in {
+    animation: fadeUp 1s ease forwards;
 }
 
-
-/* RESPONSIVE */
+/* ============================================
+   RESPONSIVE
+   ============================================ */
 @media (max-width: 768px) {
     section {
         padding: 4rem 30px;
     }
+
     .nav {
         padding: 20px 30px;
     }
@@ -662,6 +667,10 @@ button {
         text-align: center;
     }
 
+    .contact img {
+        max-width: 280px;
+    }
+
     .nav__list {
         position: absolute;
         top: 80px;
@@ -682,29 +691,19 @@ button {
     .nav__toggle {
         display: flex;
     }
-       .contact {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .contact img {
-        max-width: 280px;
-    }
-    .project-card {
-        flex: 0 0 85%;
-    }
 }
 
+/* ============================================
+   SUCCESS POPUP
+   ============================================ */
 .success-popup {
     position: fixed;
     inset: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    background: rgba(10,10,20,0.45);
+    background: rgba(10, 10, 20, 0.45);
     backdrop-filter: blur(10px);
-
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s ease, visibility 0.4s ease;
@@ -717,18 +716,16 @@ button {
 }
 
 .success-box {
-    background: rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(15px);
-    border: 1px solid rgba(255,255,255,0.2);
-
+    border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 45px 55px;
     border-radius: 20px;
     text-align: center;
     color: white;
-
     transform: translateY(40px) scale(0.9);
     opacity: 0;
-    transition: all 0.45s cubic-bezier(.17,.67,.3,1.33);
+    transition: all 0.45s cubic-bezier(.17, .67, .3, 1.33);
 }
 
 .success-popup.active .success-box {
@@ -736,7 +733,6 @@ button {
     opacity: 1;
 }
 
-/* Glowing success ring */
 .checkmark {
     width: 80px;
     height: 80px;
@@ -744,22 +740,19 @@ button {
     border: 3px solid #4ade80;
     margin: 0 auto 20px;
     position: relative;
-
     box-shadow:
         0 0 10px #4ade80,
         0 0 25px #4ade80,
-        inset 0 0 10px rgba(74,222,128,0.4);
-
+        inset 0 0 10px rgba(74, 222, 128, 0.4);
     animation: ringPulse 1.6s ease infinite;
 }
 
 @keyframes ringPulse {
-    0% { box-shadow: 0 0 10px #4ade80, 0 0 25px #4ade80; }
-    50% { box-shadow: 0 0 18px #4ade80, 0 0 40px #4ade80; }
+    0%   { box-shadow: 0 0 10px #4ade80, 0 0 25px #4ade80; }
+    50%  { box-shadow: 0 0 18px #4ade80, 0 0 40px #4ade80; }
     100% { box-shadow: 0 0 10px #4ade80, 0 0 25px #4ade80; }
 }
 
-/* Smooth checkmark draw */
 .checkmark::after {
     content: "";
     position: absolute;
@@ -775,20 +768,9 @@ button {
 }
 
 @keyframes drawCheck {
-    0% {
-        width: 0;
-        height: 0;
-        opacity: 0;
-    }
-    50% {
-        width: 20px;
-        height: 0;
-        opacity: 1;
-    }
-    100% {
-        width: 20px;
-        height: 10px;
-    }
+    0%   { width: 0;    height: 0;    opacity: 0; }
+    50%  { width: 20px; height: 0;    opacity: 1; }
+    100% { width: 20px; height: 10px; }
 }
 
 .success-box h3 {
@@ -800,15 +782,120 @@ button {
     opacity: 0.85;
     font-size: 14px;
 }
-/* Smooth closing animation */
+
 .success-popup.closing {
     opacity: 0;
 }
 
-/* Button success effect */
 #sendBtn.success {
     background: #22c55e;
     color: white;
     transform: scale(1.05);
     transition: all 0.25s ease;
+}
+/* ── Mobile tap-to-expand overlay ──
+   Mirrors the :hover rules so overlay works on touch devices.
+   Add these to the bottom of your style.css              */
+
+.project-card.tapped {
+    transform: translateY(-8px) scale(1.03);
+    z-index: 20;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.project-card.tapped img {
+    transform: scale(1.04);
+}
+
+.project-card.tapped .project-overlay {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 600px;
+}
+
+.project-card.tapped .project-overlay h4,
+.project-card.tapped .project-overlay p,
+.project-card.tapped .project-overlay .project-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile tap-to-expand overlay */
+.project-card.tapped {
+    transform: translateY(-8px) scale(1.03);
+    z-index: 20;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+ 
+.project-card.tapped img {
+    transform: scale(1.04);
+}
+ 
+.project-card.tapped .project-overlay {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 600px;
+}
+ 
+.project-card.tapped .project-overlay h4,
+.project-card.tapped .project-overlay p,
+.project-card.tapped .project-overlay .project-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+ 
+/* Dot indicators */
+.projects-dots {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+ 
+.projects-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #444;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+ 
+.projects-dot.active {
+    background: #00f5ff;
+    transform: scale(1.3);
+}
+
+/* Card title glow on hover */
+.project-card h3 {
+    position: relative;
+    display: inline-block;
+    font-size: 1rem;
+    margin-top: 10px;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.project-card h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 0%;
+    height: 2px;
+    background: #00f5ff;
+    box-shadow: 0 0 8px #00f5ff;
+    transition: width 0.35s ease;
+}
+
+.project-card:hover h3,
+.project-card.tapped h3 {
+    color: #00f5ff;
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.4);
+}
+
+.project-card:hover h3::after,
+.project-card.tapped h3::after {
+    width: 100%;
 }
