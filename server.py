@@ -1,36 +1,56 @@
 from flask import Flask, render_template, request, redirect, url_for
-import csv
 import os
 import re
+import smtplib
+from email.mime.text import MIMEText
 from datetime import datetime
 
 app = Flask(__name__)
 
-CSV_FILE = "messages.csv"
+# Load environment variables
+EMAIL_USER = os.getenv("EMAIL_USER")
+EMAIL_PASS = os.getenv("EMAIL_PASS")
 
 def is_valid_email(email):
     pattern = r"^[^@\s]+@[^@\s]+\.[^@\s]+$"
     return re.match(pattern, email)
 
-def initialize_csv():
-    if not os.path.exists(CSV_FILE):
-        with open(CSV_FILE, mode="w", newline="", encoding="utf-8") as file:
-            writer = csv.writer(file)
-            writer.writerow([
-                "timestamp",
-                "ip_address",
-                "email",
-                "subject",
-                "message"
-            ])
-        print("CSV file created.")
+def send_email(sender_email, subject, message, ip_address):
+    try:
+        body = f"""
+New message from portfolio
 
+Time: {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+IP Address: {ip_address}
 
-initialize_csv()
+Sender: {sender_email}
+Subject: {subject}
+
+Message:
+{message}
+"""
+
+        msg = MIMEText(body)
+        msg["Subject"] = f"Portfolio Contact: {subject}"
+        msg["From"] = EMAIL_USER
+        msg["To"] = EMAIL_USER
+        msg["Reply-To"] = sender_email
+
+        with smtplib.SMTP("smtp.gmail.com", 587) as server:
+            server.starttls()
+            server.login(EMAIL_USER, EMAIL_PASS)
+            server.send_message(msg)
+
+        print("✅ Email sent successfully")
+
+    except Exception as e:
+        print("❌ EMAIL ERROR:", e)
+
 
 @app.route("/")
 def home():
     return render_template("index.html")
+
 
 @app.route("/submit_form", methods=["POST"])
 def submit_form():
@@ -43,7 +63,7 @@ def submit_form():
 
         print("FORM DATA:", email, subject, message, "| IP:", ip_address)
 
-        # Bot detection
+        # Bot protection
         if honeypot:
             print("Bot detected. Ignored.")
             return "", 204
@@ -55,24 +75,15 @@ def submit_form():
         if not is_valid_email(email):
             return "Invalid email address"
 
-        # Save to CSV
-        with open(CSV_FILE, mode="a", newline="", encoding="utf-8") as file:
-            writer = csv.writer(file)
-            writer.writerow([
-                datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-                ip_address,
-                email,
-                subject,
-                message
-            ])
-
-        print("Message stored successfully.")
+        # Send email instead of CSV
+        send_email(email, subject, message, ip_address)
 
         return redirect(url_for("home"))
 
     except Exception as e:
         print("ERROR:", e)
-        return "Something went wrong while saving the message."
+        return "Something went wrong while sending the message."
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
