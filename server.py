@@ -75,4 +75,4 @@ def submit_form():
         return "Something went wrong while saving the message."
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
